@@ -1,0 +1,465 @@
+Problem 1:
+
+syntax.jsp:
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="result.jsp">
+Enter Data:<input type="text" name="box" value=""><br/>
+<input type="submit" value="OK">
+</form>
+</body>
+</html>
+
+result.jsp:
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%=request.getParameter("box") %>
+</body>
+</html>
+
+output:
+
+Enter Data: Information about jsp
+ok
+
+Information about jsp
+
+Problem 2:
+
+syntax.jsp:
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="result.jsp">
+Enter Data:<input type="text" name="box" value=""><br/>
+<input type="submit" value="OK">
+</form>
+</body>
+</html>
+
+result.jsp:
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%String s1=request.getParameter("box");
+out.println(s1);
+%>
+</body>
+</html>
+
+
+
+output:
+
+Enter Data: Hai
+ok
+
+Hai
+
+problem 3:
+
+syntax1.jsp:
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%!int i=0; %>
+<%++i; %>
+<%out.println("you are visiting the page for:");%>
+<%=i%>
+<% out.println("time");%>
+</body>
+</html>
+
+output:(after refreshing each time)
+
+you are visiting the page for: 1 time 
+you are visiting the page for: 2 time 
+you are visiting the page for: 3 time...and so on.. 
+
+Problem 4:
+
+PerformTask.java:
+
+package com.cts;
+
+public class PerformTask {
+	public String dotask() {
+		return "Hello world";
+	}
+
+}
+
+result1.jsp:
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%@page import="com.cts.PerformTask" %>
+<%PerformTask pt=new PerformTask();%>
+<%=pt.dotask() %>
+</body>
+</html>
+
+output:
+
+Hello world
+
+Problem5:
+
+pagehs.jsp:
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%@page session="true" %>
+<%session.setAttribute("age",22); %>
+<%=session.getAttribute("age") %>
+</body>
+</html>
+
+output:
+22
+
+Problem 6:
+
+pagehs1.jsp:
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"  errorPage="error1.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<%!int a=5;
+int b=0;%>
+<%int c;
+c=a/b;%>
+<%=c %>
+</body>
+</html>
+error1.jsp:
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isErrorPage="true"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%=exception %>
+<%=exception.getMessage() %>
+</body>
+</html>
+
+outptut:
+
+java.lang.ArithmeticException: / by zero / by zero
+
+Problem 7:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="prob7.jsp">
+Name:<input type="text" name="name"><br/>
+Age:<input type="text" name="age"><br/>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+page2.jsp
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%! int i,n;
+	String s1;%>
+<%s1=request.getParameter("age");
+	n=s1.length();
+		i=0;
+	do{
+		char ch=s1.charAt(i);
+		switch(ch)
+		{
+		case '0':out.println("zero");
+		break;
+		case '1':out.println("one");
+		break;
+		case '2':out.println("two");
+		break;
+		case '3':out.println("three");
+		break;
+		case '4':out.println("four");
+		break;
+		case '5':out.println("five");
+		break;
+		case '6':out.println("six");
+		break;
+		case '7':out.println("seven");
+		break;
+		case '8':out.println("eight");
+		break;
+		case '9':out.println("nine");
+		break;
+		}
+		i++;
+	}
+	while(i<n);
+	
+	%>
+
+</body>
+</html>
+
+Problem8:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Honda Cars</h1>
+</body>
+</html>
+
+Prob8.jsp:
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%@include file="prob8.html" %>
+<h2>Welcome to honda cars</h2>
+</body>
+</html>
+
+output:
+
+Honda Cars
+
+Welcome to honda cars
+
+Problem 10:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="Servlet1">
+Username:<input type="text" name="uname">
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+
+result.jsp:
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%=request.getParameter("name") %>
+</body>
+</html>
+
+Problem 12:
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%=application.getInitParameter("Email") %>
+</body>
+</html>
+
+<context-param>
+  <param-name>Email</param-name>
+  <param-value>abc123@gmail.com</param-value>
+  </context-param>
+
+Problem 14:
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%=config.getInitParameter("department") %>
+</body>
+</html>
+
+<servlet>
+  <servlet-name>abc</servlet-name>
+  <jsp-file>/prob14.jsp</jsp-file>
+  <init-param>
+  <param-name>department</param-name>
+  <param-value>cse</param-value>
+  </init-param>
+  
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>abc</servlet-name>
+  <url-pattern>/prob14.jsp</url-pattern>
+  </servlet-mapping>
+
+Problem15:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="Servlet1">
+Username:<input type="text" name="uname">
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+servlet1.java:
+package com.handson;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class Servlet1
+ */
+@WebServlet("/Servlet1")
+public class Servlet1 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Servlet1() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter pw=response.getWriter();
+		String name=request.getParameter("uname");
+		request.setAttribute("user",name);
+		RequestDispatcher rd=request.getRequestDispatcher("/");
+		rd.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+}
+
+Prob15.jsp:
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%=request.getAttribute("user") %>
+</body>
+</html>
